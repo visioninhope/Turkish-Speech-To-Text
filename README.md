@@ -2,33 +2,6 @@
 
 Bu proje, verilen bir ses dosyasının Türkçe transkripsiyonunu gerçekleştirmek üzere tasarlanmış bir Flask API'dir. [Hugging Face modeli](https://huggingface.co/mpoyraz/wav2vec2-xls-r-300m-cv8-turkish) kullanılarak ses dosyaları işlenir. Modelin eğitim ve değerlendirme verileri hakkında daha fazla bilgi için [bu bağlantıya](https://huggingface.co/mpoyraz/wav2vec2-xls-r-300m-cv8-turkish#training-and-evaluation-data) göz atabilirsiniz.
 
-## Kurulum
-
-1. **Gerekli Kütüphanelerin Kurulumu**: Proje, `requirements.txt` dosyasında belirtilen Python kütüphanelerini kullanmaktadır. Bu kütüphaneleri aşağıdaki komutla yükleyebilirsiniz:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. Kenlm kurulumu. Ben arch kullandığımdan kurulum için internete baktım. Hata ayıklama yaparken gerekliydi bende yükledim. *not*
-
-## Kullanım
-
-1. **API'yi Başlatma**: Terminalde, projenin ana dizininde aşağıdaki komutu çalıştırın:
-
-   ```bash
-   python app.py
-   ```
-
-   Bu, API'yi `http://127.0.0.1:5000/` adresinde başlatacaktır.
-
-2. **Transkripsiyon İsteği Gönderme**: Ses dosyasının transkripsiyonunu almak için, aşağıdaki `curl` komutunu kullanabilirsiniz:
-
-   ```bash
-   curl -X POST -F "file=@voice.mp3" http://127.0.0.1:5000/transcribe
-   ```
-
-   Bu komut, `voice.mp3` adlı dosyayı API'ye gönderir ve transkripsiyon sonucunu JSON olarak döndürür.
-
 ## Gelecek Geliştirmeleri
 - [x] OpenAI API ile Bağlam Düzeltme: Transkripsiyon sürecinde ortaya çıkan dilbilgisel ve anlamsal hataları düzeltmek için OpenAI'nin güçlü dil modelini entegre etmek. Bu, cümlenin bağlamına göre kelime seçimlerini optimize edebilir ve transkripsiyonun genel kalitesini artırabilir. Bu özellik, özellikle karmaşık ve teknik terimler içeren ses dosyaları için yararlı olabilir.
 
